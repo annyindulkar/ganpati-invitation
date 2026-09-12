@@ -109,23 +109,29 @@
 
   /* ---------- HERO ARCH IMAGE ---------- */
   .arch-wrap{
-    padding: clamp(4px,1vh,10px) clamp(18px,5vw,28px);
+    padding: clamp(3px,0.8vh,8px) clamp(18px,5vw,28px);
     flex: 1 1 auto;
     min-height:0;
     display:flex;
     align-items:center;
     justify-content:center;
+    overflow:hidden;
   }
   .arch{
     width:100%;
     height:100%;
+    max-width:100%;
+    max-height:100%;
     border-radius: 50% 50% 12px 12px / 26% 26% 6px 6px;
     overflow:hidden;
     border: 3px solid var(--gold);
     box-shadow: 0 10px 22px rgba(76,15,25,0.28), inset 0 0 0 5px var(--cream);
     background: linear-gradient(145deg,#F6E3B4,#EFC975);
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
-  .arch img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .arch img{ width:100%; height:100%; object-fit:contain; display:block; }
 
   /* ---------- TORAN DIVIDER ---------- */
   .toran{ display:flex; justify-content:center; opacity:0.9; flex:0 0 auto; }
@@ -185,7 +191,7 @@
   /* ---------- RSVP FORM ---------- */
   .rsvp-wrap{
     background: var(--cream);
-    padding: clamp(6px,1.4vh,16px) clamp(16px,4vw,26px) clamp(8px,1.6vh,18px);
+    padding: clamp(4px,0.8vh,10px) clamp(16px,4vw,26px) clamp(5px,1vh,12px);
     border-top: 1px solid rgba(201,151,59,0.5);
     flex: 0 0 auto;
   }
@@ -193,30 +199,30 @@
   .rsvp-wrap h3{
     text-align:center;
     color: var(--maroon-deep);
-    font-size: clamp(0.85rem,1.9vh,1.05rem);
+    font-size: clamp(0.78rem,1.5vh,0.95rem);
     font-weight:700;
-    margin-bottom: clamp(5px,1.2vh,12px);
+    margin-bottom: clamp(3px,0.6vh,8px);
   }
 
   .form-row{ display:flex; gap:10px; }
-  .form-group{ margin-bottom: clamp(5px,1.1vh,10px); flex:1; min-width:0; }
+  .form-group{ margin-bottom: clamp(3px,0.6vh,7px); flex:1; min-width:0; }
 
   .form-group label{
     display:block;
-    margin-bottom: clamp(2px,0.5vh,5px);
+    margin-bottom: clamp(1px,0.3vh,3px);
     font-weight:700;
-    font-size: clamp(0.66rem,1.3vh,0.8rem);
+    font-size: clamp(0.62rem,1.1vh,0.76rem);
     color:#452D1D;
   }
 
   .form-group input,
   .form-group select{
     width:100%;
-    padding: clamp(6px,1.3vh,10px) 12px;
+    padding: clamp(4px,0.9vh,8px) 10px;
     border: 1.5px solid #D8C6A4;
     background:var(--paper);
     border-radius:9px;
-    font-size: clamp(0.78rem,1.6vh,0.92rem);
+    font-size: clamp(0.74rem,1.4vh,0.88rem);
     font-family:inherit;
     color: var(--ink);
     outline:none;
@@ -233,8 +239,8 @@
     background: linear-gradient(135deg, #2E7D32, #4CAF50);
     color:white;
     border:none;
-    padding: clamp(8px,1.6vh,13px);
-    font-size: clamp(0.82rem,1.7vh,0.98rem);
+    padding: clamp(6px,1.2vh,11px);
+    font-size: clamp(0.78rem,1.5vh,0.92rem);
     font-weight:700;
     font-family:'Poppins', sans-serif;
     border-radius: 999px;
@@ -249,16 +255,16 @@
 
   #status{
     text-align:center;
-    margin-top: clamp(4px,0.9vh,10px);
+    margin-top: clamp(2px,0.5vh,7px);
     font-weight:700;
-    font-size: clamp(0.68rem,1.4vh,0.85rem);
+    font-size: clamp(0.64rem,1.2vh,0.8rem);
     min-height: 1.1em;
   }
 
   .footer{
     text-align:center;
-    padding: clamp(5px,1.1vh,12px);
-    font-size: clamp(0.68rem,1.4vh,0.85rem);
+    padding: clamp(3px,0.7vh,9px);
+    font-size: clamp(0.64rem,1.2vh,0.8rem);
     color: var(--maroon-deep);
     background: var(--paper);
     border-top: 1px solid rgba(201,151,59,0.4);

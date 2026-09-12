@@ -4,130 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>श्री गणेशोत्सव निमंत्रण</title>
+    <!-- Google Fonts for Marathi Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9933, #ff6600, #cc0000);
-            color: #333;
+        :root {
+            --primary: #d32f2f;
+            --primary-dark: #9a0007;
+            --accent: #ffb300;
+            --bg-gradient: linear-gradient(135deg, #7a0000 0%, #d32f2f 50%, #ff6f00 100%);
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Tiro Devanagari Marathi', 'Poppins', serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-        }
-        .card {
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            max-width: 480px;
-            width: 100%;
-            padding: 25px;
-            text-align: center;
-            border: 4px solid #ffd700;
-        }
-        h1 { color: #cc0000; margin-bottom: 5px; }
-        h2 { color: #ff6600; font-size: 1.2rem; }
-        .schedule {
-            background-color: #fff8e7;
-            border-left: 5px solid #ff9933;
-            padding: 12px;
-            text-align: left;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-        .address {
-            background-color: #f4f4f4;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-        form {
-            background-color: #fff0f5;
+            align-items: center;
             padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #ffb6c1;
-            margin-top: 15px;
+            color: #2c3e50;
         }
-        label { display: block; margin: 10px 0 5px; font-weight: bold; text-align: left; }
-        input, select {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+        .container {
+            background: var(--card-bg);
+            max-width: 550px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 3px solid var(--accent);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-img-container {
+            width: 100%;
+            max-height: 380px;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header-content {
+            text-align: center;
+            padding: 20px 20px 10px 20px;
+        }
+
+        .shlok {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .title {
+            color: var(--primary);
+            font-size: 2.1rem;
+            margin: 5px 0 15px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .welcome-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #444;
+            padding: 0 10px;
+        }
+
+        .section-card {
+            background: #fff8f0;
+            border: 1px solid #ffe0b2;
+            border-left: 5px solid var(--primary);
+            border-radius: 12px;
+            margin: 15px 20px;
+            padding: 16px;
+        }
+
+        .section-card h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-item {
+            margin-bottom: 8px;
             font-size: 1rem;
         }
-        button {
-            margin-top: 15px;
-            background-color: #25D366;
+
+        .schedule-item strong {
+            color: #000;
+        }
+
+        .highlight-box {
+            background: #fff3e0;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px dashed #ff9800;
+        }
+
+        .address-text {
+            font-size: 0.98rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .btn-map {
+            display: block;
+            background: #1976d2;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 15px 20px;
+            transition: background 0.3s;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 10px rgba(25, 118, 210, 0.3);
+        }
+
+        .btn-map:hover {
+            background: #1565c0;
+        }
+
+        /* Form Styling */
+        .rsvp-form {
+            background: #fafafa;
+            border-top: 2px solid #eee;
+            padding: 20px;
+        }
+
+        .rsvp-form h3 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #2e7d32, #43a047);
             color: white;
             border: none;
-            padding: 12px 20px;
-            font-size: 1rem;
-            border-radius: 20px;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
             cursor: pointer;
-            width: 100%;
-            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+            transition: transform 0.2s, background 0.3s;
         }
-        .btn-map {
-            display: inline-block;
-            background-color: #4285F4;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
         }
-        #status { margin-top: 10px; font-weight: bold; }
+
+        .btn-submit:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #777;
+            background: #fff;
+        }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h2>|| श्री गणेशाय नमः ||</h2>
-    <h1>🚩 गणपती बाप्पा मोरया 🚩</h1>
-    <p>सस्नेह नमस्कार, दरवर्षाप्रमाणे यंदाही आमच्या घरी श्रींचे आगमन होत आहे. बाप्पाच्या दर्शनासाठी आपण सर्वांनी नक्की यावे.</p>
-
-    <div class="schedule">
-        <h3>🗓️ उत्सव वेळापत्रक:</h3>
-        <p><b>श्री आगमन व मुक्काम:</b><br> १४ सप्टेंबर ते १९ सप्टेंबर २०२६</p>
-        <hr>
-        <p><b>विशेष - श्री सत्यनारायण पूजा:</b><br> बुधवार, १६ सप्टेंबर २०२६ (दुपारी ४:०० वाजता)</p>
+<div class="container">
+    <!-- Image Header -->
+    <div class="hero-img-container">
+        <img src="bappa.jpg" alt="श्री गणेश मूर्ति">
     </div>
 
-    <div class="address">
-        <h3>📍 पत्ता:</h3>
-        <p>फ्लॅट क्र. २०४/३, शिवमुद्रा एस.आर.ए. सी.एच.एस.,<br>
-        गांधीनगर, एल. आर. पापण मार्ग, वरळी, मुंबई - ४०००१८.</p>
+    <!-- Main Content -->
+    <div class="header-content">
+        <div class="shlok">|| श्री गणेशाय नमः ||</div>
+        <h1 class="title">🚩 गणपती बाप्पा मोरया 🚩</h1>
+        <p class="welcome-text">
+            सस्नेह नमस्कार, दरवर्षाप्रमाणे यंदाही आमच्या घरी श्रींचे आगमन होत आहे. बाप्पाच्या दर्शनासाठी व कृपाप्रसादाचा लाभ घेण्यासाठी आपण सर्वांनी सहकुटुंब नक्की यावे.
+        </p>
     </div>
 
-    <a href="https://maps.google.com/?q=Shivmudra+SRA+CHS+Worli+Mumbai+400018" target="_blank" class="btn-map">🗺️ Google Maps Location</a>
+    <!-- Schedule Card -->
+    <div class="section-card">
+        <h3>🗓️ उत्सव वेळापत्रक</h3>
+        <div class="schedule-item">
+            <strong>श्री आगमन व मुक्काम:</strong><br> 
+            १४ सप्टेंबर ते १९ सप्टेंबर २०२६
+        </div>
+        <div class="highlight-box">
+            <strong>विशेष कार्यक्रम - श्री सत्यनारायण पूजा:</strong><br>
+            बुधवार, १६ सप्टेंबर २०२६ | 🕒 दुपारी ४:०० वाजता
+        </div>
+    </div>
+
+    <!-- Address Card -->
+    <div class="section-card">
+        <h3>📍 पत्ता</h3>
+        <p class="address-text">
+            फ्लॅट क्र. २०४/३, शिवमुद्रा एस.आर.ए. सी.एच.एस.,<br>
+            गांधीनगर, एल. आर. पापण मार्ग, वरळी, मुंबई - ४०००१८.
+        </p>
+    </div>
+
+    <!-- Maps Link -->
+    <a href="https://maps.google.com/?q=Shivmudra+SRA+CHS+Worli+Mumbai+400018" target="_blank" class="btn-map">
+        🗺️ Google Maps वर लोकेशन पहा
+    </a>
 
     <!-- RSVP Form -->
-    <form id="rsvpForm">
+    <form class="rsvp-form" id="rsvpForm">
         <h3>🙏 आगमन नोंदणी (RSVP)</h3>
         
-        <label for="name">आपले नाव (Your Name):</label>
-        <input type="text" id="name" name="name" placeholder="उदा. राहुल पाटील" required>
+        <div class="form-group">
+            <label for="name">आपले पूर्ण नाव (Your Name):</label>
+            <input type="text" id="name" name="name" placeholder="उदा. राहुल पाटील" required>
+        </div>
 
-        <label for="visitDate">तुम्ही कधी येणार आहात? (Visit Date):</label>
-        <select id="visitDate" name="visitDate" required>
-            <option value="">तारीख निवडा (Select Date)</option>
-            <option value="14 Sep 2026">१४ सप्टेंबर (सोमवार)</option>
-            <option value="15 Sep 2026">१५ सप्टेंबर (मंगळवार)</option>
-            <option value="16 Sep 2026 (Satyanarayan Pooja)">१६ सप्टेंबर (सत्यनारायण पूजा - ४ PM)</option>
-            <option value="17 Sep 2026">१७ सप्टेंबर (गुरुवार)</option>
-            <option value="18 Sep 2026">१८ सप्टेंबर (शुक्रवार)</option>
-            <option value="19 Sep 2026">१९ सप्टेंबर (शनिवार)</option>
-        </select>
+        <div class="form-group">
+            <label for="visitDate">तुम्ही कधी येणार आहात? (Visit Date):</label>
+            <select id="visitDate" name="visitDate" required>
+                <option value="">तारीख निवडा</option>
+                <option value="14 Sep 2026">१४ सप्टेंबर (सोमवार)</option>
+                <option value="15 Sep 2026">१५ सप्टेंबर (मंगळवार)</option>
+                <option value="16 Sep 2026 (Satyanarayan Pooja)">१६ सप्टेंबर (सत्यनारायण पूजा - ४ PM)</option>
+                <option value="17 Sep 2026">१७ सप्टेंबर (गुरुवार)</option>
+                <option value="18 Sep 2026">१८ सप्टेंबर (शुक्रवार)</option>
+                <option value="19 Sep 2026">१९ सप्टेंबर (शनिवार)</option>
+            </select>
+        </div>
 
-        <button type="submit" id="submitBtn">नोंदणी करा (Submit)</button>
+        <button type="submit" class="btn-submit" id="submitBtn">उपस्थिती नोंदवा</button>
         <p id="status"></p>
     </form>
+
+    <div class="footer">
+        🙏 आपले नम्र: इंदुलकर कुटुंबिय 🙏
+    </div>
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwY8IfIrcq1Q587UBvWle5pZdlWypd6vMJUn_c6iNsnibBMw5uHHxzr47LK8mqcN8-fvw/exec';
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
     const form = document.getElementById('rsvpForm');
     const statusText = document.getElementById('status');
     const submitBtn = document.getElementById('submitBtn');
@@ -135,18 +317,18 @@
     form.addEventListener('submit', e => {
         e.preventDefault();
         submitBtn.disabled = true;
-        statusText.style.color = 'blue';
-        statusText.innerHTML = "कृपया थांबा, पाठवत आहे...";
+        statusText.style.color = '#1976d2';
+        statusText.innerHTML = "कृपया थांबा, तुमची नोंदणी पाठवत आहे...";
 
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                statusText.style.color = 'green';
-                statusText.innerHTML = "धन्यवाद! तुमची नोंदणी यशस्वी झाली आहे. 🙏";
+                statusText.style.color = '#2e7d32';
+                statusText.innerHTML = "धन्यवाद! तुमची नोंदणी यशस्वीरीत्या झाली आहे. 🙏";
                 form.reset();
                 submitBtn.disabled = false;
             })
             .catch(error => {
-                statusText.style.color = 'red';
+                statusText.style.color = '#d32f2f';
                 statusText.innerHTML = "काहीतरी अडचण आली, कृपया पुन्हा प्रयत्न करा.";
                 submitBtn.disabled = false;
             });

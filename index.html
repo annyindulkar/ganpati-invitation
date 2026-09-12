@@ -2,7 +2,7 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>श्री गणेशोत्सव निमंत्रण</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
 
   *{ box-sizing:border-box; margin:0; padding:0; }
 
-  html{ scroll-behavior:smooth; }
+  html, body{ height:100%; overscroll-behavior:none; }
 
   body{
     font-family:'Tiro Devanagari Marathi', serif;
@@ -30,15 +30,15 @@
       radial-gradient(circle at 15% 10%, rgba(242,161,24,0.18), transparent 40%),
       radial-gradient(circle at 85% 90%, rgba(242,161,24,0.14), transparent 45%),
       linear-gradient(160deg, var(--maroon-deep) 0%, var(--maroon) 55%, #5C0F22 100%);
-    min-height:100vh;
+    height:100dvh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
-    align-items:flex-start;
-    padding: 28px 14px;
+    align-items:center;
+    padding: clamp(4px,1.5vh,16px) clamp(6px,2vw,14px);
     color: var(--ink);
   }
 
-  /* subtle repeating kalash/paisley texture behind everything */
   body::before{
     content:"";
     position:fixed; inset:0;
@@ -52,16 +52,20 @@
     position:relative;
     z-index:1;
     background: var(--paper);
-    max-width: 560px;
+    max-width: 480px;
     width:100%;
-    border-radius: 26px;
+    height:100%;
+    max-height: 100dvh;
+    border-radius: clamp(10px,2vh,22px);
     overflow:hidden;
     box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 0 1px rgba(201,151,59,0.4);
-    animation: riseIn 0.9s cubic-bezier(.2,.8,.2,1) both;
+    animation: riseIn 0.7s cubic-bezier(.2,.8,.2,1) both;
+    display:flex;
+    flex-direction:column;
   }
 
   @keyframes riseIn{
-    from{ opacity:0; transform: translateY(28px) scale(.98); }
+    from{ opacity:0; transform: translateY(18px) scale(.98); }
     to{ opacity:1; transform: translateY(0) scale(1); }
   }
 
@@ -69,138 +73,110 @@
   .header{
     position:relative;
     text-align:center;
-    padding: 34px 26px 22px;
+    padding: clamp(8px,2vh,18px) clamp(14px,4vw,24px) clamp(4px,1vh,10px);
     background:
       radial-gradient(120% 90% at 50% -10%, var(--marigold-soft) 0%, transparent 55%),
       var(--cream);
     border-bottom: 1px solid rgba(201,151,59,0.4);
+    flex: 0 0 auto;
   }
 
-  .corner{
-    position:absolute;
-    width:64px; height:64px;
-    opacity:0.85;
-  }
-  .corner.tl{ top:10px; left:10px; }
-  .corner.tr{ top:10px; right:10px; transform: scaleX(-1); }
+  .corner{ position:absolute; width:clamp(28px,6vh,44px); height:clamp(28px,6vh,44px); opacity:0.85; }
+  .corner.tl{ top:6px; left:6px; }
+  .corner.tr{ top:6px; right:6px; transform: scaleX(-1); }
 
-  .shlok{
-    color: var(--maroon);
-    font-size: 1.05rem;
-    letter-spacing: 0.5px;
-  }
+  .shlok{ color: var(--maroon); font-size: clamp(0.68rem,1.6vh,0.9rem); letter-spacing: 0.4px; }
 
-  .diya-row{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    margin-top:6px;
-  }
+  .diya-row{ display:flex; align-items:center; justify-content:center; gap:8px; margin-top:2px; }
+  .diya-row svg{ width: clamp(14px,3vh,20px); height:auto; flex:none; }
 
   .title{
     color: var(--maroon-deep);
-    font-size: 2.35rem;
-    line-height:1.2;
+    font-size: clamp(1.15rem, 4.2vh, 1.75rem);
+    line-height:1.15;
     font-weight:700;
   }
 
   .subtitle{
-    margin-top:10px;
-    font-size:1rem;
-    line-height:1.75;
+    margin-top: clamp(2px,0.8vh,8px);
+    font-size: clamp(0.68rem,1.5vh,0.85rem);
+    line-height:1.45;
     color:#5A3A28;
-    max-width: 44ch;
+    max-width: 46ch;
     margin-left:auto;
     margin-right:auto;
   }
 
   /* ---------- HERO ARCH IMAGE ---------- */
   .arch-wrap{
-    padding: 0 30px;
-    margin-top: 22px;
+    padding: clamp(4px,1vh,10px) clamp(18px,5vw,28px);
+    flex: 1 1 auto;
+    min-height:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
   .arch{
     width:100%;
-    aspect-ratio: 4/3;
-    border-radius: 50% 50% 14px 14px / 32% 32% 8px 8px;
+    height:100%;
+    border-radius: 50% 50% 12px 12px / 26% 26% 6px 6px;
     overflow:hidden;
     border: 3px solid var(--gold);
-    box-shadow: 0 12px 28px rgba(76,15,25,0.28), inset 0 0 0 6px var(--cream);
+    box-shadow: 0 10px 22px rgba(76,15,25,0.28), inset 0 0 0 5px var(--cream);
     background: linear-gradient(145deg,#F6E3B4,#EFC975);
   }
-  .arch img{
-    width:100%; height:100%;
-    object-fit:cover;
-    display:block;
-  }
+  .arch img{ width:100%; height:100%; object-fit:cover; display:block; }
 
   /* ---------- TORAN DIVIDER ---------- */
-  .toran{
-    display:flex;
-    justify-content:center;
-    margin: 6px 0 2px;
-    opacity:0.9;
-  }
+  .toran{ display:flex; justify-content:center; opacity:0.9; flex:0 0 auto; }
+  .toran svg{ height: clamp(9px,1.6vh,16px); width:auto; }
 
   /* ---------- SECTIONS ---------- */
-  .section{
-    padding: 18px 30px;
-  }
+  .section{ padding: clamp(4px,1vh,10px) clamp(16px,4vw,26px); flex:0 0 auto; }
 
   .section h3{
     color: var(--maroon-deep);
-    font-size: 1.22rem;
+    font-size: clamp(0.82rem,1.9vh,1.02rem);
     font-weight:700;
-    display:flex;
-    align-items:center;
-    gap:9px;
-    margin-bottom: 12px;
+    display:flex; align-items:center; gap:7px;
+    margin-bottom: clamp(2px,0.6vh,8px);
   }
-
-  .section h3 svg{ flex:none; }
+  .section h3 svg{ flex:none; width:clamp(13px,2.2vh,18px); height:auto; }
 
   .schedule-item{
-    margin-bottom:10px;
-    font-size:1.02rem;
-    line-height:1.6;
-    padding-left: 4px;
+    margin-bottom: clamp(3px,0.8vh,8px);
+    font-size: clamp(0.72rem,1.6vh,0.9rem);
+    line-height:1.4;
     border-left: 3px solid var(--marigold-soft);
-    padding-left:12px;
+    padding-left:10px;
   }
   .schedule-item strong{ color: var(--ink); }
 
   .highlight-box{
-    margin-top:10px;
+    margin-top: clamp(3px,0.7vh,8px);
     background: linear-gradient(135deg, #FFF3D6, #FCE6B0);
     border: 1px solid var(--gold);
-    border-radius: 12px;
-    padding: 12px 14px;
-    font-size: 1rem;
+    border-radius: 10px;
+    padding: clamp(6px,1.1vh,11px) 12px;
+    font-size: clamp(0.72rem,1.6vh,0.88rem);
+    line-height:1.4;
   }
 
-  .address-text{
-    font-size:1rem;
-    line-height:1.7;
-    color:#452D1D;
-  }
+  .address-text{ font-size: clamp(0.72rem,1.6vh,0.9rem); line-height:1.45; color:#452D1D; }
 
   .btn-map{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    margin-top:14px;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    margin-top: clamp(5px,1vh,12px);
     background: var(--maroon-deep);
     color:#FCEFD9;
     text-decoration:none;
     text-align:center;
-    padding:13px;
+    padding: clamp(7px,1.4vh,12px);
     border-radius: 999px;
     font-weight:700;
     font-family:'Poppins', sans-serif;
-    font-size:0.95rem;
-    box-shadow: 0 8px 18px rgba(78,11,27,0.35);
+    font-size: clamp(0.72rem,1.5vh,0.88rem);
+    box-shadow: 0 6px 14px rgba(78,11,27,0.35);
     transition: background 0.25s ease, transform 0.2s ease;
   }
   .btn-map:hover{ background:#380813; transform: translateY(-1px); }
@@ -209,36 +185,38 @@
   /* ---------- RSVP FORM ---------- */
   .rsvp-wrap{
     background: var(--cream);
-    padding: 24px 30px 28px;
+    padding: clamp(6px,1.4vh,16px) clamp(16px,4vw,26px) clamp(8px,1.6vh,18px);
     border-top: 1px solid rgba(201,151,59,0.5);
+    flex: 0 0 auto;
   }
 
   .rsvp-wrap h3{
     text-align:center;
     color: var(--maroon-deep);
-    font-size:1.3rem;
+    font-size: clamp(0.85rem,1.9vh,1.05rem);
     font-weight:700;
-    margin-bottom: 18px;
+    margin-bottom: clamp(5px,1.2vh,12px);
   }
 
-  .form-group{ margin-bottom:16px; }
+  .form-row{ display:flex; gap:10px; }
+  .form-group{ margin-bottom: clamp(5px,1.1vh,10px); flex:1; min-width:0; }
 
   .form-group label{
     display:block;
-    margin-bottom:6px;
+    margin-bottom: clamp(2px,0.5vh,5px);
     font-weight:700;
-    font-size:0.95rem;
+    font-size: clamp(0.66rem,1.3vh,0.8rem);
     color:#452D1D;
   }
 
   .form-group input,
   .form-group select{
     width:100%;
-    padding:12px 14px;
+    padding: clamp(6px,1.3vh,10px) 12px;
     border: 1.5px solid #D8C6A4;
     background:var(--paper);
-    border-radius:10px;
-    font-size:1rem;
+    border-radius:9px;
+    font-size: clamp(0.78rem,1.6vh,0.92rem);
     font-family:inherit;
     color: var(--ink);
     outline:none;
@@ -255,40 +233,36 @@
     background: linear-gradient(135deg, #2E7D32, #4CAF50);
     color:white;
     border:none;
-    padding:15px;
-    font-size:1.08rem;
+    padding: clamp(8px,1.6vh,13px);
+    font-size: clamp(0.82rem,1.7vh,0.98rem);
     font-weight:700;
     font-family:'Poppins', sans-serif;
     border-radius: 999px;
     cursor:pointer;
-    box-shadow: 0 10px 22px rgba(46,125,50,0.32);
+    box-shadow: 0 8px 18px rgba(46,125,50,0.32);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .btn-submit:hover{ transform: translateY(-2px); box-shadow: 0 14px 26px rgba(46,125,50,0.38); }
+  .btn-submit:hover{ transform: translateY(-2px); box-shadow: 0 12px 22px rgba(46,125,50,0.38); }
   .btn-submit:active{ transform: translateY(0); }
-  .btn-submit:disabled{
-    background:#c9c9c9;
-    cursor:not-allowed;
-    box-shadow:none;
-    transform:none;
-  }
+  .btn-submit:disabled{ background:#c9c9c9; cursor:not-allowed; box-shadow:none; transform:none; }
   .btn-submit:focus-visible{ outline:3px solid var(--maroon-deep); outline-offset:2px; }
 
   #status{
     text-align:center;
-    margin-top:12px;
+    margin-top: clamp(4px,0.9vh,10px);
     font-weight:700;
-    font-size:0.96rem;
-    min-height: 1.2em;
+    font-size: clamp(0.68rem,1.4vh,0.85rem);
+    min-height: 1.1em;
   }
 
   .footer{
     text-align:center;
-    padding:18px;
-    font-size:0.98rem;
+    padding: clamp(5px,1.1vh,12px);
+    font-size: clamp(0.68rem,1.4vh,0.85rem);
     color: var(--maroon-deep);
     background: var(--paper);
     border-top: 1px solid rgba(201,151,59,0.4);
+    flex: 0 0 auto;
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -296,11 +270,10 @@
     .btn-map, .btn-submit{ transition:none; }
   }
 
-  @media (max-width: 420px){
-    .title{ font-size:1.9rem; }
-    .header{ padding:26px 18px 18px; }
-    .section, .rsvp-wrap{ padding-left:20px; padding-right:20px; }
-    .arch-wrap{ padding:0 18px; }
+  /* Very short screens: trim the decorative dividers and hero further */
+  @media (max-height: 620px){
+    .toran{ display:none; }
+    .subtitle{ display:none; }
   }
 </style>
 </head>
@@ -315,13 +288,13 @@
     <div class="shlok">|| श्री गणेशाय नमः ||</div>
 
     <div class="diya-row">
-      <svg width="22" height="26" viewBox="0 0 22 26" fill="none"><path d="M2 18c0 4 4 6 9 6s9-2 9-6-4-5-9-5-9 1-9 5z" fill="#C9973B"/><path d="M11 13c-1.5-3-1-6 1-8 1 3 3 4 3 7 0 2-1.5 3-2 3-1 0-1.5-1-2-2z" fill="#F2A118"/></svg>
+      <svg viewBox="0 0 22 26" fill="none"><path d="M2 18c0 4 4 6 9 6s9-2 9-6-4-5-9-5-9 1-9 5z" fill="#C9973B"/><path d="M11 13c-1.5-3-1-6 1-8 1 3 3 4 3 7 0 2-1.5 3-2 3-1 0-1.5-1-2-2z" fill="#F2A118"/></svg>
       <h1 class="title">गणपती बाप्पा मोरया</h1>
-      <svg width="22" height="26" viewBox="0 0 22 26" fill="none"><path d="M2 18c0 4 4 6 9 6s9-2 9-6-4-5-9-5-9 1-9 5z" fill="#C9973B"/><path d="M11 13c-1.5-3-1-6 1-8 1 3 3 4 3 7 0 2-1.5 3-2 3-1 0-1.5-1-2-2z" fill="#F2A118"/></svg>
+      <svg viewBox="0 0 22 26" fill="none"><path d="M2 18c0 4 4 6 9 6s9-2 9-6-4-5-9-5-9 1-9 5z" fill="#C9973B"/><path d="M11 13c-1.5-3-1-6 1-8 1 3 3 4 3 7 0 2-1.5 3-2 3-1 0-1.5-1-2-2z" fill="#F2A118"/></svg>
     </div>
 
     <p class="subtitle">
-      सस्नेह नमस्कार, दरवर्षाप्रमाणे यंदाही आमच्या घरी श्रींचे आगमन होत आहे. बाप्पाच्या दर्शनासाठी व कृपाप्रसादाचा लाभ घेण्यासाठी आपण सर्वांनी सहकुटुंब नक्की यावे.
+      सस्नेह नमस्कार, दरवर्षाप्रमाणे यंदाही आमच्या घरी श्रींचे आगमन होत आहे. सहकुटुंब नक्की यावे.
     </p>
   </div>
 
@@ -332,7 +305,7 @@
   </div>
 
   <div class="toran" aria-hidden="true">
-    <svg width="260" height="28" viewBox="0 0 260 28" fill="none">
+    <svg viewBox="0 0 260 28" fill="none">
       <path d="M0 2 Q130 20 260 2" stroke="#C9973B" stroke-width="1.5" fill="none"/>
       <g fill="#7C1329">
         <path d="M20 2c0 6-6 8-6 12s3 6 6 6 6-2 6-6-6-6-6-12z"/>
@@ -347,33 +320,30 @@
 
   <div class="section">
     <h3>
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="14" rx="2" stroke="#7C1329" stroke-width="1.6"/><path d="M2 8h16M6 2v4M14 2v4" stroke="#7C1329" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="14" rx="2" stroke="#7C1329" stroke-width="1.6"/><path d="M2 8h16M6 2v4M14 2v4" stroke="#7C1329" stroke-width="1.6" stroke-linecap="round"/></svg>
       उत्सव वेळापत्रक
     </h3>
     <div class="schedule-item">
-      <strong>श्री आगमन व विसर्जन::</strong><br>
-      १४ सप्टेंबर ते १९ सप्टेंबर २०२६
+      <strong>श्री आगमन व मुक्काम:</strong> १४ ते १९ सप्टेंबर २०२६
     </div>
     <div class="highlight-box">
-      <strong>विशेष कार्यक्रम — श्री सत्यनारायण पूजा</strong><br>
-      बुधवार, १६ सप्टेंबर २०२६ · दुपारी ४:०० वाजता
+      <strong>श्री सत्यनारायण पूजा</strong> — बुधवार, १६ सप्टेंबर · दुपारी ४:०० वाजता
     </div>
   </div>
 
   <div class="toran" aria-hidden="true">
-    <svg width="260" height="16" viewBox="0 0 260 16" fill="none"><path d="M0 8h100M160 8h100" stroke="#E4C77E" stroke-width="1.4"/><circle cx="130" cy="8" r="4" fill="#C9973B"/></svg>
+    <svg viewBox="0 0 260 16" fill="none"><path d="M0 8h100M160 8h100" stroke="#E4C77E" stroke-width="1.4"/><circle cx="130" cy="8" r="4" fill="#C9973B"/></svg>
   </div>
 
   <div class="section">
     <h3>
-      <svg width="18" height="20" viewBox="0 0 18 20" fill="none"><path d="M9 1c4.5 0 8 3.5 8 8 0 6-8 10-8 10s-8-4-8-10c0-4.5 3.5-8 8-8z" stroke="#7C1329" stroke-width="1.6"/><circle cx="9" cy="9" r="2.4" stroke="#7C1329" stroke-width="1.4"/></svg>
+      <svg viewBox="0 0 18 20" fill="none"><path d="M9 1c4.5 0 8 3.5 8 8 0 6-8 10-8 10s-8-4-8-10c0-4.5 3.5-8 8-8z" stroke="#7C1329" stroke-width="1.6"/><circle cx="9" cy="9" r="2.4" stroke="#7C1329" stroke-width="1.4"/></svg>
       पत्ता
     </h3>
     <p class="address-text">
-      सदनिका क्र. २०४, इमारत क्र. ३, शिवमुद्रा एस.आर.ए. सी.एच.एस.,<br>
-      गांधीनगर, एल. आर. पापण मार्ग, वरळी, मुंबई - ४०००१८.
+      फ्लॅट क्र. २०४/३, शिवमुद्रा एस.आर.ए. सी.एच.एस., गांधीनगर, एल. आर. पापण मार्ग, वरळी, मुंबई - ४०००१८.
     </p>
-    <a href="https://maps.app.goo.gl/Xu3hiM9gRyNYp9v37" target="_blank" class="btn-map">
+    <a href="https://maps.google.com/?q=Shivmudra+SRA+CHS+Worli+Mumbai+400018" target="_blank" class="btn-map">
       Google Maps वर लोकेशन पहा
     </a>
   </div>
@@ -382,9 +352,11 @@
     <h3>आगमन नोंदणी</h3>
 
     <form id="rsvpForm">
-      <div class="form-group">
-        <label for="name">आपले पूर्ण नाव</label>
-        <input type="text" id="name" name="name" placeholder="उदा. अनिकेत इंदुलकर" required>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">आपले पूर्ण नाव</label>
+          <input type="text" id="name" name="name" placeholder="अनिकेत इंदुलकर" required>
+        </div>
       </div>
 
       <div class="form-group">

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्री गणेशोत्सव निमंत्रण</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9933, #ff6600, #cc0000);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-width: 480px;
+            width: 100%;
+            padding: 25px;
+            text-align: center;
+            border: 4px solid #ffd700;
+        }
+        h1 { color: #cc0000; margin-bottom: 5px; }
+        h2 { color: #ff6600; font-size: 1.2rem; }
+        .schedule {
+            background-color: #fff8e7;
+            border-left: 5px solid #ff9933;
+            padding: 12px;
+            text-align: left;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .address {
+            background-color: #f4f4f4;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #fff0f5;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ffb6c1;
+            margin-top: 15px;
+        }
+        label { display: block; margin: 10px 0 5px; font-weight: bold; text-align: left; }
+        input, select {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            margin-top: 15px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        .btn-map {
+            display: inline-block;
+            background-color: #4285F4;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #status { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>|| श्री गणेशाय नमः ||</h2>
+    <h1>🚩 गणपती बाप्पा मोरया 🚩</h1>
+    <p>सस्नेह नमस्कार, दरवर्षाप्रमाणे यंदाही आमच्या घरी श्रींचे आगमन होत आहे. बाप्पाच्या दर्शनासाठी आपण सर्वांनी नक्की यावे.</p>
+
+    <div class="schedule">
+        <h3>🗓️ उत्सव वेळापत्रक:</h3>
+        <p><b>श्री आगमन व मुक्काम:</b><br> १४ सप्टेंबर ते १९ सप्टेंबर २०२६</p>
+        <hr>
+        <p><b>विशेष - श्री सत्यनारायण पूजा:</b><br> बुधवार, १६ सप्टेंबर २०२६ (दुपारी ४:०० वाजता)</p>
+    </div>
+
+    <div class="address">
+        <h3>📍 पत्ता:</h3>
+        <p>फ्लॅट क्र. २०४/३, शिवमुद्रा एस.आर.ए. सी.एच.एस.,<br>
+        गांधीनगर, एल. आर. पापण मार्ग, वरळी, मुंबई - ४०००१८.</p>
+    </div>
+
+    <a href="https://maps.google.com/?q=Shivmudra+SRA+CHS+Worli+Mumbai+400018" target="_blank" class="btn-map">🗺️ Google Maps Location</a>
+
+    <!-- RSVP Form -->
+    <form id="rsvpForm">
+        <h3>🙏 आगमन नोंदणी (RSVP)</h3>
+        
+        <label for="name">आपले नाव (Your Name):</label>
+        <input type="text" id="name" name="name" placeholder="उदा. राहुल पाटील" required>
+
+        <label for="visitDate">तुम्ही कधी येणार आहात? (Visit Date):</label>
+        <select id="visitDate" name="visitDate" required>
+            <option value="">तारीख निवडा (Select Date)</option>
+            <option value="14 Sep 2026">१४ सप्टेंबर (सोमवार)</option>
+            <option value="15 Sep 2026">१५ सप्टेंबर (मंगळवार)</option>
+            <option value="16 Sep 2026 (Satyanarayan Pooja)">१६ सप्टेंबर (सत्यनारायण पूजा - ४ PM)</option>
+            <option value="17 Sep 2026">१७ सप्टेंबर (गुरुवार)</option>
+            <option value="18 Sep 2026">१८ सप्टेंबर (शुक्रवार)</option>
+            <option value="19 Sep 2026">१९ सप्टेंबर (शनिवार)</option>
+        </select>
+
+        <button type="submit" id="submitBtn">नोंदणी करा (Submit)</button>
+        <p id="status"></p>
+    </form>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwY8IfIrcq1Q587UBvWle5pZdlWypd6vMJUn_c6iNsnibBMw5uHHxzr47LK8mqcN8-fvw/exec';
+    const form = document.getElementById('rsvpForm');
+    const statusText = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        statusText.style.color = 'blue';
+        statusText.innerHTML = "कृपया थांबा, पाठवत आहे...";
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                statusText.style.color = 'green';
+                statusText.innerHTML = "धन्यवाद! तुमची नोंदणी यशस्वी झाली आहे. 🙏";
+                form.reset();
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                statusText.style.color = 'red';
+                statusText.innerHTML = "काहीतरी अडचण आली, कृपया पुन्हा प्रयत्न करा.";
+                submitBtn.disabled = false;
+            });
+    });
+</script>
+
+</body>
+</html>
